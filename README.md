@@ -171,3 +171,18 @@ STM32 灵动手执行端
 详细协议说明见：
 
 - [通信协议设计说明](docs/protocol_design.md)
+## 第 1 周阶段成果
+
+第 1 周主要完成已有项目整理和旗舰项目架构设计。
+
+阶段成果：
+
+- 完成 `env-monitor-v2` 项目 README 和 FreeRTOS 架构说明
+- 完成 `linux-iot-gateway` 项目 README、运行说明和测试记录
+- 新建 `aiot-embodied-control-system` 系统级仓库
+- 完成 AIoT 智能眼镜 + 具身智能灵动手系统总架构设计
+- 完成 MQTT JSON + UART 自定义帧通信协议设计
+
+详细总结见：
+
+- [Week01 项目总结](weekly/week01.md)
