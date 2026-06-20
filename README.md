@@ -128,3 +128,46 @@ STM32 控制 PCA9685 输出 PWM
 - 灵动手状态机如何避免动作混乱
 - 舵机控制为什么需要安全限幅
 - OTA 在智能硬件中的作用
+
+## 通信协议设计
+
+系统采用两段式通信协议：
+
+```text
+AIoT 智能眼镜
+    ↓ MQTT JSON
+Linux IoT Gateway
+    ↓ UART 自定义帧
+STM32 灵动手执行端
+```
+
+### MQTT JSON 示例
+
+```json
+{
+  "device": "smart_glasses_01",
+  "gesture": "NOD",
+  "mode": "CONTROL",
+  "cmd": "GRAB",
+  "timestamp": 1718600000
+}
+```
+
+### UART 自定义帧格式
+
+```text
+0xAA 0x55 CMD LEN DATA CHECKSUM 0x0D 0x0A
+```
+
+### 命令映射
+
+| gesture | cmd | 灵动手动作 |
+|---|---|---|
+| LEFT | OPEN | 张开 |
+| NOD | GRAB | 抓取 |
+| RIGHT | RELEASE | 释放 |
+| BUTTON_LONG | STOP | 停止 / 安全状态 |
+
+详细协议说明见：
+
+- [通信协议设计说明](docs/protocol_design.md)
